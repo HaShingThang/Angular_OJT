@@ -1,0 +1,24 @@
+<div class="form-wrapper">
+  <h2 class="title">Register Form</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && onRegisterSubmit()" novalidate>
+      <mat-form-field>
+        <input id="name" matInput formControlName="name" [(ngModel)]="user.name" placeholder="Enter your name" />
+      </mat-form-field>
+      <mat-form-field>
+        <input id="email" matInput formControlName="email" [(ngModel)]="user.email" placeholder="Enter your email" />
+      </mat-form-field>
+      <mat-form-field class="password">
+        <input id="password" matInput formControlName="password" [(ngModel)]="user.password"
+          placeholder="Enter your password" [type]="hide ? 'password':'text'" />
+        <mat-icon matSuffix (click)="hide = !hide">
+          {{hide ? 'visibility' : 'visibility_off'}}
+        </mat-icon>
+      </mat-form-field>
+      <button mat-button type="submit" class="mat-raised-button mat-primary"
+        [disabled]="!registerForm.valid">Register</button>
+    </form>
+</div>
+<div class="userInfo" *ngIf="userInfo">
+  <h2>Name: {{userInfo.name}}</h2>
+  <h2>Email: {{userInfo.email}}</h2>
+</div>

@@ -8,11 +8,11 @@
     <p>Address: {{ user.address }}</p>
   </div>
 </ul>
+
+<h3>Pick a highlight color</h3>
 <div>
   <input type="radio" name="colors" (click)="color = 'lightgreen'" />Green
   <input type="radio" name="colors" (click)="color = 'yellow'" />Yellow
   <input type="radio" name="colors" (click)="color = 'cyan'" />Cyan
 </div>
-<div>
-  <p [appHightlight]="color">Highlight me!</p>
-</div>
+<p [appHightlight]="color">Highlight me!</p>

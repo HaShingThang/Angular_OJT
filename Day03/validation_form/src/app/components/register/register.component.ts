@@ -17,6 +17,7 @@ export interface UserInfo {
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent {
     userInfo?: UserInfo;
     user: RegisterModel = new RegisterModel();

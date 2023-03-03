@@ -1,0 +1,25 @@
+.formWrapper {
+  background-color: #c0c0c0;
+  width: 320px;
+  border-radius: 6px;
+  padding: 10px 20px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.formWrapper h2 {
+  padding-bottom: 20px;
+}
+
+.formWrapper form {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+
+.formWrapper button {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}

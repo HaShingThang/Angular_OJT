@@ -1,0 +1,31 @@
+<div class="formWrapper">
+  <h2>Custom Pipe</h2>
+  <form
+    [formGroup]="USDMMK"
+    (ngSubmit)="USDMMK.valid && onChangeSubmit()"
+    novalidate
+  >
+    <mat-form-field>
+      <input
+        id="usd"
+        type="number"
+        matInput
+        formControlName="usd"
+        [(ngModel)]="price.usd"
+        placeholder="Enter Price of USD"
+      />
+    </mat-form-field>
+    <button
+      mat-button
+      type="submit"
+      class="mat-raised-button mat-primary"
+      [disabled]="!USDMMK.valid"
+    >
+      Submit
+    </button>
+  </form>
+  <h3>USD To MMK</h3>
+  <h4>
+    <span>{{ usd }} USD - </span>{{ usd! | usdMmk : mmk }} MMK
+  </h4>
+</div>

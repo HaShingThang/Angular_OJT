@@ -1,0 +1,18 @@
+<h2>User List</h2>
+<ul *ngFor="let user of users">
+  <app-todo-child [name]="user.name"></app-todo-child>
+  <div *ngIf="user.address === 'Ygn'">
+    <p>Address: {{ user.address }}</p>
+  </div>
+  <div *ngIf="user.address === 'Mdy'">
+    <p>Address: {{ user.address }}</p>
+  </div>
+</ul>
+<div>
+  <input type="radio" name="colors" (click)="color = 'lightgreen'" />Green
+  <input type="radio" name="colors" (click)="color = 'yellow'" />Yellow
+  <input type="radio" name="colors" (click)="color = 'cyan'" />Cyan
+</div>
+<div>
+  <p [appHightlight]="color">Highlight me!</p>
+</div>

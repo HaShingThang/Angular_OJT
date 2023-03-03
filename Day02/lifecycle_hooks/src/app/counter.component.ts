@@ -14,6 +14,7 @@ import {
     </div>
   `
 })
+
 export class MyCounterComponent implements OnChanges {
   @Input() counter = 0;
   changeLog: string[] = [];

@@ -13,6 +13,7 @@ import { Hero } from './hero';
   </div>
   `
 })
+
 export class DoCheckComponent implements DoCheck {
   @Input() hero!: Hero;
   @Input() power = '';
@@ -39,18 +40,18 @@ export class DoCheckComponent implements DoCheck {
     }
 
     if (this.changeDetected) {
-        this.noChangeCount = 0;
+      this.noChangeCount = 0;
     } else {
-        // log that hook was called when there was no relevant change.
-        const count = this.noChangeCount += 1;
-        const noChangeMsg = `DoCheck called ${count}x when no change to hero or power`;
-        if (count === 1) {
-          // add new "no change" message
-          this.changeLog.push(noChangeMsg);
-        } else {
-          // update last "no change" message
-          this.changeLog[this.changeLog.length - 1] = noChangeMsg;
-        }
+      // log that hook was called when there was no relevant change.
+      const count = this.noChangeCount += 1;
+      const noChangeMsg = `DoCheck called ${count}x when no change to hero or power`;
+      if (count === 1) {
+        // add new "no change" message
+        this.changeLog.push(noChangeMsg);
+      } else {
+        // update last "no change" message
+        this.changeLog[this.changeLog.length - 1] = noChangeMsg;
+      }
     }
 
     this.changeDetected = false;

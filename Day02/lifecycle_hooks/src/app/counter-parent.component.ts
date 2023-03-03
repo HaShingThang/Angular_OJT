@@ -19,6 +19,7 @@ import { LoggerService } from './logger.service';
   `,
   providers: [LoggerService]
 })
+
 export class CounterParentComponent {
   value = 0;
   spyLog: string[] = [];

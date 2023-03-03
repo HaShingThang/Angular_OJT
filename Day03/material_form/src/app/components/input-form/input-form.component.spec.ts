@@ -8,9 +8,9 @@ describe('InputFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InputFormComponent ]
+      declarations: [InputFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(InputFormComponent);
     component = fixture.componentInstance;

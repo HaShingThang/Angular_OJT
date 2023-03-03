@@ -6,17 +6,17 @@ let nextId = 1;
 
 // Spy on any element to which it is applied.
 // Usage: <div appSpy>...</div>
-@Directive({selector: '[appSpy]'})
+@Directive({ selector: '[appSpy]' })
 export class SpyDirective implements OnInit, OnDestroy {
-  private id = nextId++;
+    private id = nextId++;
 
-  constructor(private logger: LoggerService) { }
+    constructor(private logger: LoggerService) { }
 
-  ngOnInit() {
-    this.logger.log(`Spy #${this.id} onInit`);
-  }
+    ngOnInit() {
+        this.logger.log(`Spy #${this.id} onInit`);
+    }
 
-  ngOnDestroy() {
-    this.logger.log(`Spy #${this.id} onDestroy`);
-  }
+    ngOnDestroy() {
+        this.logger.log(`Spy #${this.id} onDestroy`);
+    }
 }

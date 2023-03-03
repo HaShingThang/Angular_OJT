@@ -7,6 +7,7 @@ import { Hero } from './hero';
   selector: 'do-check-parent',
   templateUrl: './do-check-parent.component.html'
 })
+
 export class DoCheckParentComponent {
   hero!: Hero;
   power = '';

@@ -51,6 +51,6 @@ import { SpyDirective } from './spy.directive';
     SpyParentComponent,
     SpyDirective
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

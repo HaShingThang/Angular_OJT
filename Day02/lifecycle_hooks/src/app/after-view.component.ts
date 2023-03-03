@@ -10,13 +10,14 @@ import { LoggerService } from './logger.service';
       <app-child-view></app-child-view>
     <div>child view ends</div>
   `
-   + `
+    + `
     <p *ngIf="comment" class="comment">
       {{comment}}
     </p>
   `
 })
-export class AfterViewComponent implements  AfterViewChecked, AfterViewInit {
+
+export class AfterViewComponent implements AfterViewChecked, AfterViewInit {
   comment = '';
   private prevHero = '';
 

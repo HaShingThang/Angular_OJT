@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
     <input type="text" id="hero-name" [(ngModel)]="hero">
   `
 })
+
 export class ChildViewComponent {
   hero = 'Magneta';
 }

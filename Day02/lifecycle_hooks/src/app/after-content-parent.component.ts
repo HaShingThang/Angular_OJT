@@ -3,16 +3,16 @@ import { Component } from '@angular/core';
 import { LoggerService } from './logger.service';
 
 @Component({
-  selector: 'after-content-parent',
-  template: `
+    selector: 'after-content-parent',
+    template: `
   <div class="parent">
     <h2>AfterContent</h2>
 
     <div *ngIf="show">` +
-    `<after-content>
+        `<after-content>
         <app-child></app-child>
       </after-content>`
-    + `</div>
+        + `</div>
 
     <div class="info">
       <h3>AfterContent Logs</h3>
@@ -21,18 +21,18 @@ import { LoggerService } from './logger.service';
     </div>
   </div>
   `,
-  providers: [LoggerService]
+    providers: [LoggerService]
 })
 
 export class AfterContentParentComponent {
-  show = true;
+    show = true;
 
-  constructor(public logger: LoggerService) { }
+    constructor(public logger: LoggerService) { }
 
-  reset() {
-    this.logger.clear();
-    // quickly remove and reload AfterContentComponent which recreates it
-    this.show = false;
-    this.logger.tick_then(() => this.show = true);
-  }
+    reset() {
+        this.logger.clear();
+        // quickly remove and reload AfterContentComponent which recreates it
+        this.show = false;
+        this.logger.tick_then(() => this.show = true);
+    }
 }

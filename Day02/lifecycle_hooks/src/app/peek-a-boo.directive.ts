@@ -4,7 +4,7 @@ import { LoggerService } from './logger.service';
 
 let nextId = 1;
 
-@Directive({selector: '[appPeekABoo]'})
+@Directive({ selector: '[appPeekABoo]' })
 export class PeekABooDirective implements OnInit {
   constructor(private logger: LoggerService) { }
 

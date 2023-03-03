@@ -1,44 +1,44 @@
-<form [formGroup]="signin"  class="example-form">
-    <h3>Material Form</h3>
-    <mat-form-field color="accent" class="example-full-width">
-        <mat-label>Email</mat-label>
-        <input type="email" matInput placeholder="Ex. pat@example.com" formControlName="email">
-        <mat-error *ngIf="emailInput?.value">
-            Please enter a valid email address
-        </mat-error>
+<form [formGroup]="signin" class="example-form">
+  <h3>Material Form</h3>
+  <mat-form-field color="accent" class="example-full-width">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput placeholder="Ex. pat@example.com" formControlName="email">
+    <mat-error *ngIf="emailInput?.value">
+      Please enter a valid email address
+    </mat-error>
 
-    </mat-form-field>
-    <mat-form-field color="accent" class="example-full-width">
-        <mat-label>ID No</mat-label>
-        <input matInput placeholder="ID No" [type]="hide ? 'password' : 'text'" formControlName="password">
-        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        <br>
-        <mat-error *ngIf="!passwordInput?.value || passwordInput?.value.length < 6" style="z-index: 99999">
-            ID No must be at least 6 characters
-        </mat-error>
-    </mat-form-field>
-    <mat-radio-group aria-label="Select an option">
-        <mat-label>Select Gender</mat-label>
-        <br>
-        <mat-radio-button value="1">Male</mat-radio-button>
-        <mat-radio-button value="2">Female</mat-radio-button>
-        <mat-radio-button value="2">Other</mat-radio-button>
-    </mat-radio-group>
-    <section class="example-section">
-        <mat-label>Select Framework and Libray</mat-label>
-        <br>
-        <mat-checkbox class="example-margin">Angular</mat-checkbox>
-        <mat-checkbox class="example-margin">ReactJs</mat-checkbox>
-        <mat-checkbox class="example-margin">VueJs</mat-checkbox>
-        <mat-checkbox class="example-margin">Flutter</mat-checkbox>
-    </section>
-    <mat-form-field color="accent" appearance="fill">
-        <mat-label>Inherited calendar color</mat-label>
-        <input matInput [matDatepicker]="picker1">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
-    </mat-form-field>
+  </mat-form-field>
+  <mat-form-field color="accent" class="example-full-width">
+    <mat-label>ID No</mat-label>
+    <input matInput placeholder="ID No" [type]="hide ? 'password' : 'text'" formControlName="password">
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    <br>
+    <mat-error *ngIf="!passwordInput?.value || passwordInput?.value.length < 6" style="z-index: 99999">
+      ID No must be at least 6 characters
+    </mat-error>
+  </mat-form-field>
+  <mat-radio-group aria-label="Select an option">
+    <mat-label>Select Gender</mat-label>
+    <br>
+    <mat-radio-button value="1">Male</mat-radio-button>
+    <mat-radio-button value="2">Female</mat-radio-button>
+    <mat-radio-button value="2">Other</mat-radio-button>
+  </mat-radio-group>
+  <section class="example-section">
+    <mat-label>Select Framework and Libray</mat-label>
+    <br>
+    <mat-checkbox class="example-margin">Angular</mat-checkbox>
+    <mat-checkbox class="example-margin">ReactJs</mat-checkbox>
+    <mat-checkbox class="example-margin">VueJs</mat-checkbox>
+    <mat-checkbox class="example-margin">Flutter</mat-checkbox>
+  </section>
+  <mat-form-field color="accent" appearance="fill">
+    <mat-label>Inherited calendar color</mat-label>
+    <input matInput [matDatepicker]="picker1">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
 
-    <button type="submit" mat-raised-button color="accent">Submit</button>
+  <button type="submit" mat-raised-button color="accent">Submit</button>
 </form>

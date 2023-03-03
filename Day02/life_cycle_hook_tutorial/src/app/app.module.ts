@@ -19,4 +19,5 @@ import { ChildComponent } from './components/child/child.component';
     providers: [],
     bootstrap: [AppComponent]
 })
+
 export class AppModule { }

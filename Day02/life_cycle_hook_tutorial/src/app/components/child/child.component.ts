@@ -7,7 +7,6 @@ import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit,
 })
 
 export class ChildComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
-
     @Input() userName = ''
     @ViewChild('wrapper') wrapper!: ElementRef;
     @ContentChild('contentWrapper') content!: ElementRef;

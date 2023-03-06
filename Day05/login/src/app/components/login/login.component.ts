@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 
 export class LoginComponent {
   constructor(private router: Router) { }
+  
   signin: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)])

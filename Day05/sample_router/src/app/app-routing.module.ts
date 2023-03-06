@@ -4,12 +4,13 @@ import { CrisisListComponent } from './components/crisis-list/crisis-list.compon
 import { HeroesListComponent } from './components/heroes-list/heroes-list.component';
 
 const routes: Routes = [
-  { path: 'crisis-list', component: CrisisListComponent },
-  { path: 'heroes-list', component: HeroesListComponent },
+    { path: 'crisis-list', component: CrisisListComponent },
+    { path: 'heroes-list', component: HeroesListComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

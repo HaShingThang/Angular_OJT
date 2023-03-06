@@ -8,16 +8,17 @@ import { HeroesListComponent } from './components/heroes-list/heroes-list.compon
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CrisisListComponent,
-    HeroesListComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        CrisisListComponent,
+        HeroesListComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
+
 export class AppModule { }

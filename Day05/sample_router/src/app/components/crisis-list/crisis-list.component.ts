@@ -5,6 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './crisis-list.component.html',
   styleUrls: ['./crisis-list.component.css']
 })
-export class CrisisListComponent {
 
-}
+export class CrisisListComponent { }

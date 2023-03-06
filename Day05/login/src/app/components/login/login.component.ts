@@ -26,7 +26,7 @@ export class LoginComponent {
     return this.signin.get('password')
   }
 
-  isLoggedIn: boolean = false;
+  isLoggedIn: boolean = true;
   invalid: string = ''
 
   onRegisterSubmit() {

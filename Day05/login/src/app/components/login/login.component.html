@@ -1,0 +1,42 @@
+<form
+  [formGroup]="signin"
+  (ngSubmit)="signin.valid && onRegisterSubmit()"
+  novalidate
+  class="example-form"
+>
+  <h3>Welcome Back, Please Login</h3>
+  <mat-error class="invalid" *ngIf="invalid"> {{ invalid }} </mat-error>
+  <mat-form-field color="accent" class="example-full-width">
+    <mat-label>Email</mat-label>
+    <input
+      type="email"
+      matInput
+      placeholder="Ex. joseph@example.com"
+      formControlName="email"
+    />
+    <mat-error *ngIf="!emailInput?.value">
+      Please enter a valid email address
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field color="accent" class="example-full-width">
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      placeholder="Password"
+      [type]="hide ? 'password' : 'text'"
+      formControlName="password"
+    />
+    <mat-icon matSuffix (click)="hide = !hide">{{
+      hide ? "visibility_off" : "visibility"
+    }}</mat-icon>
+    <br />
+    <mat-error
+      *ngIf="!passwordInput?.value || passwordInput?.value.length < 6"
+      style="z-index: 99999"
+    >
+      Password must be at least 6 characters
+    </mat-error>
+  </mat-form-field>
+
+  <button type="submit" mat-raised-button color="accent">Submit</button>
+</form>

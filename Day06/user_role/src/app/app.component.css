@@ -1,0 +1,12 @@
+h1 a {
+  font-size: 26px;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+.loginForm {
+  padding-top: 80px;
+}

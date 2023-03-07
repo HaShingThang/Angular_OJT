@@ -1,0 +1,39 @@
+<div class="container">
+  <legend>Create Item</legend>
+  <p class="text-danger text-center" *ngIf="validation">{{ validation }}</p>
+  <form>
+    <div class="mb-3">
+      <label for="txtName" class="form-label">Name</label>
+      <input
+        type="text"
+        name="name"
+        [(ngModel)]="fruitForm.name"
+        class="form-control"
+        id="txtName"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="txtPrice" class="form-label">Price</label>
+      <input
+        type="number"
+        name="price"
+        [(ngModel)]="fruitForm.price"
+        class="form-control"
+        id="txtPrice"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="txtQuantity" class="form-label">Quantity</label>
+      <input
+        type="number"
+        name="quantity"
+        [(ngModel)]="fruitForm.quantity"
+        class="form-control"
+        id="txtQuantity"
+      />
+    </div>
+    <button type="button" (click)="create()" class="btn btn-primary">
+      Create
+    </button>
+  </form>
+</div>

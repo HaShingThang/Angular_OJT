@@ -1,6 +1,14 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-  <h1><a routerLink="/">Logo</a></h1>
+  <h1 *ngIf="authService.getRole() === 'ROLE_ADMIN'">
+    <a routerLink="/admin">Logo</a>
+  </h1>
+  <h1 *ngIf="authService.getRole() === 'ROLE_USER'">
+    <a routerLink="/user">Logo</a>
+  </h1>
+  <h1 *ngIf="!authService.isLoggedIn()">
+    <a routerLink="/login">Logo</a>
+  </h1>
   <div class="spacer"></div>
 
   <button
@@ -33,8 +41,7 @@
           <br />
           <br />
           <div class="signup-or-separator">
-            <span class="h6 signup-or-separator--text">or</span>
-            <hr />
+            <span class="h6 signup-or-separator--text">OR</span>
           </div>
           <button (click)="login('ROLE_USER')" class="btn-lgin">
             Login as a User <i class="fas fa-user"></i>

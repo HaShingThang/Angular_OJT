@@ -28,7 +28,9 @@ export class AppComponent implements OnInit {
         }
     }
 
-    ngOnInit(): void { }
+    ngOnInit(): void {
+        console.log("Working")
+    }
 
     login(val: string) {
         this.authService.login(val)

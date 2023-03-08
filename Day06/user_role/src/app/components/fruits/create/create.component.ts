@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Fruits } from 'src/app/Interface/fruits.interface';
@@ -17,19 +18,31 @@ export class CreateComponent implements OnInit {
         quantity: 0,
     };
 
-    validation!: string;
+    invalidName!: string;
+    invalidPrice!: string;
+    invalidQty!: string;
 
-    constructor(private fruitService: FruitsService, private router: Router) { }
+    constructor(
+        private fruitService: FruitsService,
+        private router: Router,
+        private location: Location
+    ) { }
 
     ngOnInit(): void { }
 
+    goBackToPrevPage(): void {
+        this.location.back();
+    }
+
     create() {
-        if (this.fruitForm.name === '') {
-            this.validation = 'Required Item Name';
-        } else if (this.fruitForm.price <= 0) {
-            this.validation = 'Required Item price';
-        } else if (this.fruitForm.quantity <= 0) {
-            this.validation = 'Required Item Quentity';
+        const isName = this.fruitForm.name === '';
+        const isPrice = this.fruitForm.price <= 0;
+        const isQty = this.fruitForm.quantity <= 0;
+
+        if (isName || isPrice || isQty) {
+            if (isName) this.invalidName = 'Rquired item name.';
+            if (isPrice) this.invalidPrice = 'Item price should be grather than 0.';
+            if (isQty) this.invalidQty = 'Item quentity should be grather than 0.';
         } else {
             this.fruitService.create(this.fruitForm).subscribe({
                 next: (data) => {

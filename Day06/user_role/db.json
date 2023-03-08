@@ -2,9 +2,21 @@
   "fruits": [
     {
       "id": 1,
-      "name": "Joseph",
+      "name": "Banana",
       "price": 1,
       "quantity": 1
+    },
+    {
+      "id": 2,
+      "name": "Apple",
+      "price": 1,
+      "quantity": 1
+    },
+    {
+      "id": 3,
+      "name": "Mango ",
+      "price": 3,
+      "quantity": 4
     }
   ]
 }

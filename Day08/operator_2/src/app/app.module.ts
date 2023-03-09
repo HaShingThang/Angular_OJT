@@ -8,6 +8,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { OperatorsComponent } from './components/operators/operators.component';
+import { SubscriptionComponent } from './components/subscription/subscription.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { OperatorsComponent } from './components/operators/operators.component';
     NotFoundComponent,
     HomeComponent,
     SideBarComponent,
-    OperatorsComponent
+    OperatorsComponent,
+    SubscriptionComponent
   ],
   imports: [
     BrowserModule,

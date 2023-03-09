@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Subject, from, BehaviorSubject, ReplaySubject } from 'rxjs';
+import { Subject, from, BehaviorSubject, ReplaySubject, AsyncSubject } from 'rxjs';
 
 @Component({
     selector: 'app-subject',
@@ -13,13 +13,16 @@ export class SubjectComponent {
         this.isRun = !val;
         if (this.isRun) {
             //Subject
-            const subject = new Subject<number>();
+            // const subject = new Subject<number>();
 
             //BehaviorSubject
             // const subject = new BehaviorSubject(0);
 
             // ReplaySubject
             // const subject = new ReplaySubject(2);
+
+            //AsyncSubject
+            const subject = new AsyncSubject();
 
             subject.subscribe({
                 next: (v) => console.log(`observer A: ${v}`),

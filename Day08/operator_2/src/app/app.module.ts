@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { OperatorsComponent } from './components/operators/operators.component';
 import { SubscriptionComponent } from './components/subscription/subscription.component';
+import { SubjectComponent } from './components/subject/subject.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SubscriptionComponent } from './components/subscription/subscription.co
     HomeComponent,
     SideBarComponent,
     OperatorsComponent,
-    SubscriptionComponent
+    SubscriptionComponent,
+    SubjectComponent
   ],
   imports: [
     BrowserModule,

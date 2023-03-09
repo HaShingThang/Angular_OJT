@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { OperatorsComponent } from './components/operators/operators.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { SubjectComponent } from './components/subject/subject.component';
 import { SubscriptionComponent } from './components/subscription/subscription.component';
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
     children: [
       { path: "", redirectTo: "operators", pathMatch: "full" },
       { path: "operators", component: OperatorsComponent },
-      { path: "subscription", component: SubscriptionComponent }
+      { path: "subscription", component: SubscriptionComponent },
+      { path: "subject", component: SubjectComponent }
     ]
   },
   { path: "**", component: NotFoundComponent }

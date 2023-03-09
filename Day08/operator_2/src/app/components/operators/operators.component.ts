@@ -25,12 +25,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./operators.component.css'],
 })
 export class OperatorsComponent {
-  runOperators: boolean = false
-  constructor(private router: Router) { }
+  isRun: boolean = false
 
   runOperator(val: boolean) {
-    this.runOperators = !val
-    if (this.runOperators) {
+    this.isRun = !val
+    if (this.isRun) {
       of(1, 2, 3)
         .pipe(map((x) => x * x))
         .subscribe((v) => console.log(`LineOne value: ${v}`));

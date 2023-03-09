@@ -1,0 +1,23 @@
+header {
+  position: fixed;
+  width: 100%;
+  background-color: #5c5b5b;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  color: #fff;
+}
+
+header ul li {
+  list-style: none;
+}
+
+header ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #fff;
+}

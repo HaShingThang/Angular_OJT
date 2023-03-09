@@ -1,0 +1,5 @@
+.operators{
+     width: calc(100% - 260px);
+     margin-left: 260px;
+     padding: 100px 20px;
+}

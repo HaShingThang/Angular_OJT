@@ -12,21 +12,19 @@ import { SubscriptionComponent } from './components/subscription/subscription.co
 import { SubjectComponent } from './components/subject/subject.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavBarComponent,
-    NotFoundComponent,
-    HomeComponent,
-    SideBarComponent,
-    OperatorsComponent,
-    SubscriptionComponent,
-    SubjectComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NavBarComponent,
+        NotFoundComponent,
+        HomeComponent,
+        SideBarComponent,
+        OperatorsComponent,
+        SubscriptionComponent,
+        SubjectComponent,
+    ],
+    imports: [BrowserModule, AppRoutingModule],
+    providers: [],
+    bootstrap: [AppComponent],
 })
+
 export class AppModule { }

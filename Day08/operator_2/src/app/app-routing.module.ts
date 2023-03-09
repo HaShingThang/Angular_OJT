@@ -8,20 +8,21 @@ import { SubjectComponent } from './components/subject/subject.component';
 import { SubscriptionComponent } from './components/subscription/subscription.component';
 
 const routes: Routes = [
-  {
-    path: "", component: HomeComponent,
-    children: [
-      { path: "", redirectTo: "operators", pathMatch: "full" },
-      { path: "operators", component: OperatorsComponent },
-      { path: "subscription", component: SubscriptionComponent },
-      { path: "subject", component: SubjectComponent }
-    ]
-  },
-  { path: "**", component: NotFoundComponent }
+    {
+        path: "", component: HomeComponent,
+        children: [
+            { path: "", redirectTo: "operators", pathMatch: "full" },
+            { path: "operators", component: OperatorsComponent },
+            { path: "subscription", component: SubscriptionComponent },
+            { path: "subject", component: SubjectComponent }
+        ]
+    },
+    { path: "**", component: NotFoundComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

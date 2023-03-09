@@ -1,11 +1,18 @@
 import { Component } from '@angular/core';
-import { Subject, from, BehaviorSubject, ReplaySubject, AsyncSubject } from 'rxjs';
+import {
+    Subject,
+    from,
+    BehaviorSubject,
+    ReplaySubject,
+    AsyncSubject,
+} from 'rxjs';
 
 @Component({
     selector: 'app-subject',
     templateUrl: './subject.component.html',
     styleUrls: ['./subject.component.css'],
 })
+
 export class SubjectComponent {
     isRun: boolean = false;
 

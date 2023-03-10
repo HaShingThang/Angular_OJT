@@ -1,0 +1,18 @@
+.register-container {
+  width: 60%;
+  padding: 20px;
+  margin: 0 auto;
+  padding-top: 20px;
+  form {
+    padding: 20px;
+    background-color: #c0c0c0;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    h2 {
+      text-align: center;
+    }
+  }
+}

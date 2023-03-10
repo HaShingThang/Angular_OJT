@@ -1,0 +1,63 @@
+<div class="register-container">
+  <form action="">
+    <h2>Register Form</h2>
+    <mat-form-field class="input-field">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" />
+    </mat-form-field>
+    <mat-form-field class="input-field">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" />
+    </mat-form-field>
+    <mat-form-field class="input-field">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" />
+    </mat-form-field>
+    <mat-form-field class="input-field">
+      <mat-label>Confirm Password</mat-label>
+      <input matInput type="password" />
+    </mat-form-field>
+    <mat-radio-group aria-label="Select an option">
+      <mat-label>Gender</mat-label>
+      <mat-radio-button value="Male">Male</mat-radio-button>
+      <mat-radio-button value="Female">Female</mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field appearance="fill">
+      <mat-label>Team</mat-label>
+      <select matNativeControl required>
+        <option value="Wordpress">Wordpress</option>
+        <option value="Java">Java</option>
+        <option value="Php">Php</option>
+        <option value="Nodejs">Nodejs</option>
+      </select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Select Role</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let role of roles" [value]="role.value">
+          {{ role.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <section>
+      <mat-label>Select Hobby</mat-label>
+      <mat-checkbox class="example-margin">Reading</mat-checkbox>
+      <mat-checkbox class="example-margin">Swimming</mat-checkbox>
+      <mat-checkbox class="example-margin">Cooking</mat-checkbox>
+    </section>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Date of birth" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        placeholder="Description"
+        maxlength="1500"
+        rows="4"
+      ></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary">Register</button>
+  </form>
+</div>

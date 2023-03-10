@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-
-
-interface Role {
-    value: string
-}
+import { Role } from 'src/app/interfaces/role.interface';
 
 @Component({
     selector: 'app-register',

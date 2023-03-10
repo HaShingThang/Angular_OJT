@@ -1,19 +1,54 @@
 <div class="login-container">
-  <form action="">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
     <h2>Login Form</h2>
-    <mat-form-field appearance="fill">
-      <mat-label>Enter your email</mat-label>
-      <input matInput placeholder="joe@example.com" required />
+    <mat-form-field>
+      <input matInput placeholder="Email" formControlName="email" />
       <mat-error
-        *ngIf="getEmailError && getEmailError.invalid && getEmailError.touched"
-        >Enter Your Email</mat-error
+        *ngIf="
+          !loginForm.get('email')?.errors?.required &&
+          loginForm.get('email')?.errors?.pattern
+        "
       >
+        Please enter a valid email address
+      </mat-error>
+      <mat-error
+        *ngIf="
+          loginForm.get('email')?.invalid &&
+          (loginForm.get('email')?.dirty || loginForm.get('email')?.touched) &&
+          loginForm.get('email')?.errors?.required
+        "
+      >
+        Email is required.
+      </mat-error>
     </mat-form-field>
-    <mat-form-field class="input-field">
-      <mat-label>Password</mat-label>
-      <input type="password" matInput placeholder="Password" required />
+    <mat-form-field>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <mat-icon matSuffix (click)="hide = !hide">
+        {{ hide ? "visibility" : "visibility_off" }}
+      </mat-icon>
+      <mat-error *ngIf="!loginForm.get('password')?.errors?.required">
+        Password must include 1 capital, 1 small, 1 number, 1 symbol, min
+        5chars, max 8chars.
+      </mat-error>
+      <mat-error
+        *ngIf="
+          loginForm.get('password')?.invalid &&
+          (loginForm.get('password')?.dirty ||
+            loginForm.get('password')?.touched) &&
+          loginForm.get('password')?.errors?.required
+        "
+      >
+        Password is required.
+      </mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary">Login</button>
+    <button [disabled]="!loginForm.valid" mat-raised-button color="primary">
+      Login
+    </button>
     <div class="form-footer">
       <p></p>
       <p>Don't have an account? <a routerLink="/register">Register</a></p>

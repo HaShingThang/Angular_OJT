@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -7,16 +8,27 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 
 export class LoginComponent {
-    loginForm = new FormGroup({
-        email: new FormControl('', [Validators.required, Validators.email]),
-        password: new FormControl('', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])
-    })
-
-    get getEmailError() {
-        return this.loginForm.get('email')
+    loginForm: FormGroup | any;
+     hide: boolean = true
+    constructor(
+        private router: Router
+    ) {
+        this.loginForm = new FormGroup({
+            email: new FormControl('', [Validators.required, Validators.email, Validators.pattern(
+                '[a-z0-9]+@[a-z]+\.[a-z]{2,3}',
+            ),]),
+            password: new FormControl('', [Validators.required, Validators.pattern(
+                '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{5,8}$'
+            )])
+        });
     }
-
-    get getPassword() {
-        return this.loginForm.get('password')
+    ngOnInit(): void {
+    }
+    onSubmit() {
+        if (!this.loginForm.valid) {
+            return;
+        }
+        localStorage.setItem('user', this.loginForm.value)
+        this.router.navigate(['/home'])
     }
 }

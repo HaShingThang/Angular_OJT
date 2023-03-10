@@ -13,8 +13,9 @@ export class RegisterComponent {
         { value: "Member" },
         { value: "User" }
     ]
-    name = new FormControl('', [Validators.required, Validators.minLength(3)]);
-    email = new FormControl('', [Validators.required, Validators.email]);
+
+    name = new FormControl('', [Validators.required, Validators.minLength(3)])
+    email = new FormControl('', [Validators.required, Validators.email])
     hide = true;
 
     getNameError() {

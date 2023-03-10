@@ -1,13 +1,17 @@
 <div class="login-container">
   <form action="">
     <h2>Login Form</h2>
-    <mat-form-field class="input-field">
-      <mat-label>Email</mat-label>
-      <input matInput type="email" />
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="joe@example.com" required />
+      <mat-error
+        *ngIf="getEmailError && getEmailError.invalid && getEmailError.touched"
+        >Enter Your Email</mat-error
+      >
     </mat-form-field>
     <mat-form-field class="input-field">
       <mat-label>Password</mat-label>
-      <input matInput type="password" />
+      <input type="password" matInput placeholder="Password" required />
     </mat-form-field>
     <button mat-raised-button color="primary">Login</button>
     <div class="form-footer">

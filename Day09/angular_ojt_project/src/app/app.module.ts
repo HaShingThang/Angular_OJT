@@ -18,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { RegisterComponent } from './components/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const DATE_FORMAT = {
   parse: {
@@ -36,7 +37,8 @@ export const DATE_FORMAT = {
   declarations: [
     AppComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

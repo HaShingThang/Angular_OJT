@@ -28,7 +28,6 @@ export class LoginComponent {
         if (!this.loginForm.valid) {
             return;
         }
-        localStorage.setItem('user', this.loginForm.value)
-        this.router.navigate(['/home'])
+        localStorage.setItem('user', JSON.stringify(this.loginForm.value))
     }
 }

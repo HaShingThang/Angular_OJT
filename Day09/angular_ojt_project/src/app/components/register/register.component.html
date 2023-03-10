@@ -1,26 +1,95 @@
 <div class="register-container">
-  <form action="">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
     <h2>Register Form</h2>
     <mat-form-field class="input-field">
       <mat-label>Name</mat-label>
-      <input matInput type="text" />
+      <input matInput type="text" formControlName="name" />
+      <mat-error *ngIf="!registerForm.get('name')?.errors?.required">
+        Name must be grather than 2 chars.
+      </mat-error>
+      <mat-error
+        *ngIf="
+          registerForm.get('name')?.invalid &&
+          (registerForm.get('name')?.dirty ||
+            registerForm.get('name')?.touched) &&
+          registerForm.get('name')?.errors?.required
+        "
+      >
+        Name is required.
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="input-field">
       <mat-label>Email</mat-label>
-      <input matInput type="email" />
+      <input matInput type="email" formControlName="email" />
+      <mat-error
+        *ngIf="
+          !registerForm.get('email')?.errors?.required &&
+          registerForm.get('email')?.errors?.pattern
+        "
+      >
+        Please enter a valid email address.
+      </mat-error>
+      <mat-error
+        *ngIf="
+          registerForm.get('email')?.invalid &&
+          (registerForm.get('email')?.dirty ||
+            registerForm.get('email')?.touched) &&
+          registerForm.get('email')?.errors?.required
+        "
+      >
+        Email is required.
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="input-field">
       <mat-label>Password</mat-label>
-      <input matInput type="password" />
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        formControlName="password"
+      />
+      <mat-icon matSuffix (click)="hide = !hide">
+        {{ hide ? "visibility" : "visibility_off" }}
+      </mat-icon>
+      <mat-error *ngIf="!registerForm.get('password')?.errors?.required">
+        Password must include 1 capital, 1 small, 1 number, 1 symbol, min
+        5chars, max 8chars.
+      </mat-error>
+      <mat-error
+        *ngIf="
+          registerForm.get('password')?.invalid &&
+          (registerForm.get('password')?.dirty ||
+            registerForm.get('password')?.touched) &&
+          registerForm.get('password')?.errors?.required
+        "
+      >
+        Password is required.
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="input-field">
       <mat-label>Confirm Password</mat-label>
-      <input matInput type="password" />
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        formControlName="confirmPass"
+      />
+      <mat-error *ngIf="registerForm.get('confirmPass')">
+        Password do not match
+      </mat-error>
     </mat-form-field>
-    <mat-radio-group aria-label="Select an option">
+    <mat-radio-group aria-label="Select an option" formControlName="gender">
       <mat-label>Gender</mat-label>
       <mat-radio-button value="Male">Male</mat-radio-button>
       <mat-radio-button value="Female">Female</mat-radio-button>
+      <mat-error
+        *ngIf="
+          registerForm.get('gender')?.invalid &&
+          (registerForm.get('gender')?.dirty ||
+            registerForm.get('gender')?.touched) &&
+          registerForm.get('gender')?.errors?.required
+        "
+      >
+        Gender is required.
+      </mat-error>
     </mat-radio-group>
     <mat-form-field appearance="fill">
       <mat-label>Team</mat-label>
@@ -58,6 +127,8 @@
         rows="4"
       ></textarea>
     </mat-form-field>
-    <button mat-raised-button color="primary">Register</button>
+    <button [disabled]="!registerForm.valid" mat-raised-button color="primary">
+      Register
+    </button>
   </form>
 </div>

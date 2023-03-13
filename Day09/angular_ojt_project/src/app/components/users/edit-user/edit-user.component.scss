@@ -1,0 +1,36 @@
+.register-container {
+    width: 60%;
+    padding: 20px;
+    margin: 0 auto;
+    padding-top: 20px;
+    form {
+      padding: 20px;
+      background-color: #c0c0c0;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 20px;
+      h2 {
+        text-align: center;
+      }
+      .check-box {
+        display: flex;
+        flex-direction: row;
+      }
+      .check-box-error {
+        margin-top: -20px;
+      }
+      .form-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 16px 0;
+      }
+      button:disabled {
+        cursor: not-allowed;
+        pointer-events: all !important;
+      }
+    }
+  }
+  

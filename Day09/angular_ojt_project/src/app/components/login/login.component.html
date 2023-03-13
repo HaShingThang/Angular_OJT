@@ -1,6 +1,7 @@
 <div class="login-container">
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
     <h2>Login Form</h2>
+    <p class="invalid-user" *ngIf="invalidUser">{{ invalidUser }}</p>
     <mat-form-field>
       <input matInput placeholder="Email" formControlName="email" />
       <mat-error
@@ -31,10 +32,6 @@
       <mat-icon matSuffix (click)="hide = !hide">
         {{ hide ? "visibility" : "visibility_off" }}
       </mat-icon>
-      <mat-error *ngIf="!loginForm.get('password')?.errors?.required">
-        Password must include 1 capital, 1 small, 1 number, 1 symbol, min
-        5chars, max 8chars.
-      </mat-error>
       <mat-error
         *ngIf="
           loginForm.get('password')?.invalid &&

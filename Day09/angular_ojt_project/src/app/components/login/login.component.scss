@@ -14,6 +14,10 @@
     h2 {
       text-align: center;
     }
+    .invalid-user {
+      text-align: center;
+      color: #ff6347;
+    }
     .form-footer {
       display: flex;
       align-items: center;
@@ -24,5 +28,11 @@
       cursor: not-allowed;
       pointer-events: all !important;
     }
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .login-container {
+    width: 99%;
   }
 }

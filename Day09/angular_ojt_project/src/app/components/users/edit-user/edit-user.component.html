@@ -1,20 +1,17 @@
-<div *ngIf="authService.isLoggedIn()">
-  <app-nav-bar></app-nav-bar>
-</div>
 <div class="register-container">
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
-    <h2 *ngIf="authService.isLoggedIn()">Add User</h2>
-    <h2 *ngIf="!authService.isLoggedIn()">Register Form</h2>
+  <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()" novalidate>
+    <h2>Edit User</h2>
     <mat-form-field>
       <input matInput formControlName="name" placeholder="Name" />
       <mat-error
         *ngIf="
-          registerForm.controls['name'].invalid &&
-          (registerForm.controls['name'].dirty ||
-            registerForm.controls['name'].touched)
+          editUserForm.controls['name'].invalid &&
+          (editUserForm.controls['name'].dirty ||
+            editUserForm.controls['name'].touched)
         "
       >
-        Name is required and must be between 3 and 40 characters long.
+        Name is required and must be between 3 and 40 characters long and can
+        only contain letters and periods.
       </mat-error>
     </mat-form-field>
 
@@ -22,9 +19,9 @@
       <input matInput formControlName="email" placeholder="Email" />
       <mat-error
         *ngIf="
-          registerForm.controls['email'].invalid &&
-          (registerForm.controls['email'].dirty ||
-            registerForm.controls['email'].touched)
+          editUserForm.controls['email'].invalid &&
+          (editUserForm.controls['email'].dirty ||
+            editUserForm.controls['email'].touched)
         "
       >
         Please enter a valid email address.
@@ -43,9 +40,9 @@
       </mat-icon>
       <mat-error
         *ngIf="
-          registerForm.controls['password'].invalid &&
-          (registerForm.controls['password'].dirty ||
-            registerForm.controls['password'].touched)
+          editUserForm.controls['password'].invalid &&
+          (editUserForm.controls['password'].dirty ||
+            editUserForm.controls['password'].touched)
         "
       >
         Password is required and must contain at least one uppercase letter, one
@@ -62,13 +59,9 @@
         placeholder="Confirm Password"
       />
       <mat-error
-        *ngIf="
-          getConfirmPassword &&
-          getConfirmPassword.invalid &&
-          getConfirmPassword.touched
-        "
+        *ngIf="editUserForm.controls?.['confirmPass']?.errors?.['passwordMismatch']"
       >
-        Password must match.
+        Passwords do not match
       </mat-error>
     </mat-form-field>
 
@@ -80,9 +73,9 @@
     </mat-radio-group>
     <mat-error
       *ngIf="
-        registerForm.controls['gender'].invalid &&
-        (registerForm.controls['gender'].dirty ||
-          registerForm.controls['gender'].touched)
+        editUserForm.controls['gender'].invalid &&
+        (editUserForm.controls['gender'].dirty ||
+          editUserForm.controls['gender'].touched)
       "
     >
       Please select a gender.
@@ -97,9 +90,9 @@
       </mat-select>
       <mat-error
         *ngIf="
-          registerForm.controls['team'].invalid &&
-          (registerForm.controls['team'].dirty ||
-            registerForm.controls['team'].touched)
+          editUserForm.controls['team'].invalid &&
+          (editUserForm.controls['team'].dirty ||
+            editUserForm.controls['team'].touched)
         "
       >
         Team is required.
@@ -114,9 +107,9 @@
       </mat-select>
       <mat-error
         *ngIf="
-          registerForm.controls['role'].invalid &&
-          (registerForm.controls['role'].dirty ||
-            registerForm.controls['role'].touched)
+          editUserForm.controls['role'].invalid &&
+          (editUserForm.controls['role'].dirty ||
+            editUserForm.controls['role'].touched)
         "
       >
         Role is required.
@@ -128,19 +121,20 @@
       <mat-checkbox
         *ngFor="let hobby of hobbies; let i = index"
         [value]="hobby.value"
+        [checked]="userData.hobby && userData.hobby.includes(hobby.value)"
         (change)="onCheckboxChange($event)"
         formArrayName="hobby"
       >
         {{ hobby.value }}
       </mat-checkbox>
     </div>
-    <!-- <mat-error
+    <mat-error
       class="check-box-error"
-      *ngIf="registerForm.controls['hobby'].invalid  &&
-         registerForm.controls['hobby'].errors?.['required']"
+      *ngIf="editUserForm.controls['hobby'].invalid  &&
+           editUserForm.controls['hobby'].errors?.['required']"
     >
       Checkbox is required, select at least one value.
-    </mat-error> -->
+    </mat-error>
     <mat-form-field appearance="fill">
       <mat-label>Date of Birth</mat-label>
       <input matInput [matDatepicker]="dob" formControlName="dob" required />
@@ -148,36 +142,26 @@
       <mat-datepicker #dob></mat-datepicker>
       <mat-error
         *ngIf="
-          registerForm.controls['dob'].invalid &&
-          (registerForm.controls['dob'].dirty ||
-            registerForm.controls['dob'].touched)
+          editUserForm.controls['dob'].invalid &&
+          (editUserForm.controls['dob'].dirty ||
+            editUserForm.controls['dob'].touched)
         "
       >
         Please select a valid date of birth.
       </mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <textarea
-        matInput
-        placeholder="Description"
-        maxlength="1500"
-        rows="4"
-        formControlName="desc"
-      ></textarea>
     </mat-form-field>
 
     <button
       mat-raised-button
       color="primary"
       type="submit"
-      [disabled]="!registerForm.valid"
+      [disabled]="!editUserForm.valid"
     >
-      <span *ngIf="!authService.isLoggedIn()">Register</span>
-      <span *ngIf="authService.isLoggedIn()">Add User</span>
+      Update
     </button>
-    <div *ngIf="!authService.isLoggedIn()" class="form-footer">
+    <div class="form-footer">
       <p></p>
-      <p>Already have an account? <a routerLink="/login">Login</a></p>
+      <h3><a routerLink="/user-list">Back</a></h3>
     </div>
   </form>
 </div>

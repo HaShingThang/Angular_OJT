@@ -14,5 +14,28 @@
     h2 {
       text-align: center;
     }
+    .check-box {
+      display: flex;
+      flex-direction: row;
+    }
+    .check-box-error {
+      margin-top: -20px;
+    }
+    .form-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 16px 0;
+    }
+    button:disabled {
+      cursor: not-allowed;
+      pointer-events: all !important;
+    }
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .register-container {
+    width: 99%;
   }
 }

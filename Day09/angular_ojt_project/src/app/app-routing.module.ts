@@ -11,13 +11,16 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'user-list', component: UserListComponent, canActivate: [AuthGuard] },
-  { path: 'edit-user/:id', component: EditUserComponent, canActivate: [AuthGuard] },
-  // { path: '**', component: UserListComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: 'login' }
+  {
+    path: 'edit-user/:id',
+    component: EditUserComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: '**', redirectTo: 'login' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,16 +1,21 @@
 header {
-  background-color: #df2582;
-  padding: 20px;
+  background-color: #0c0246;
+  padding: 0px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   h1 {
-    color: #fff;
     font-size: 20px;
+    padding-top: 20px;
+    a {
+      color: #fff;
+    }
   }
   ul {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
     gap: 40px;
     li {
       font-size: 16px;
@@ -25,15 +30,18 @@ header {
 
 @media screen and (max-width: 520px) {
   header {
-    background-color: #df2582;
-    padding: 3.846vw;
+    padding: 0vw 3.846vw;
     h1 {
       font-size: 3.846vw;
+      padding-top: 3.846vw;
     }
     ul {
       gap: 7.692vw;
       li {
         font-size: 3.077vw;
+        a {
+          font-weight: 500;
+        }
       }
     }
   }

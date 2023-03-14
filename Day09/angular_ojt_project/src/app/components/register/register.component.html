@@ -1,6 +1,3 @@
-<div *ngIf="authService.isLoggedIn()">
-  <app-nav-bar></app-nav-bar>
-</div>
 <div class="register-container">
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
     <h2 *ngIf="authService.isLoggedIn()">Add User</h2>
@@ -31,52 +28,45 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
       <input
         matInput
-        [type]="hide ? 'password' : 'text'"
         formControlName="password"
-        placeholder="Password"
+        required
+        [type]="hide ? 'password' : 'text'"
       />
       <mat-icon matSuffix (click)="hide = !hide">
         {{ hide ? "visibility" : "visibility_off" }}
       </mat-icon>
-      <mat-error
-        *ngIf="
-          registerForm.controls['password'].invalid &&
-          (registerForm.controls['password'].dirty ||
-            registerForm.controls['password'].touched)
-        "
+      <mat-error *ngIf="registerForm.get('password')?.hasError('required')"
+        >Password is required</mat-error
       >
-        Password is required and must contain at least one uppercase letter, one
-        lowercase letter, one number, one special character, and be between 5
-        and 8 characters long.
-      </mat-error>
+      <mat-error *ngIf="registerForm.get('password')?.hasError('pattern')"
+        >Password must be between 5 and 8 characters and contain at least one
+        uppercase letter, one lowercase letter, one number, and one special
+        character</mat-error
+      >
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Confirm Password</mat-label>
       <input
         matInput
-        [type]="hide ? 'password' : 'text'"
         formControlName="confirmPass"
-        placeholder="Confirm Password"
+        required
+        [type]="hide ? 'password' : 'text'"
       />
-      <mat-error
-        *ngIf="
-          getConfirmPassword &&
-          getConfirmPassword.invalid &&
-          getConfirmPassword.touched
-        "
+      <mat-error *ngIf="registerForm.hasError('passwordMismatch')"
+        >Passwords do not match</mat-error
       >
-        Password must match.
-      </mat-error>
     </mat-form-field>
 
     <mat-radio-group formControlName="gender" required>
       <mat-label>Select Gender</mat-label>
       <br />
-      <mat-radio-button value="male">Male</mat-radio-button>
-      <mat-radio-button value="female">Female</mat-radio-button>
+      <mat-radio-button color="primary" value="male">Male</mat-radio-button>
+      <mat-radio-button color="primary" value="female">Female</mat-radio-button>
     </mat-radio-group>
     <mat-error
       *ngIf="
@@ -126,6 +116,7 @@
       <mat-label>Select Hobby</mat-label>
       <br />
       <mat-checkbox
+        color="primary"
         *ngFor="let hobby of hobbies; let i = index"
         [value]="hobby.value"
         (change)="onCheckboxChange($event)"

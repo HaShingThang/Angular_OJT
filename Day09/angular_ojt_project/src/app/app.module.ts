@@ -17,6 +17,8 @@ import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { DatePipe } from '@angular/common';
 import { RegisterComponent } from './components/register/register.component';
@@ -29,44 +31,47 @@ import { UserListComponent } from './components/users/user-list/user-list.compon
 import { ConfirmDialogComponent } from './components/users/confirm-dialog/confirm-dialog.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    RegisterComponent,
-    LoginComponent,
-    NotFoundComponent,
-    EditUserComponent,
-    UserListComponent,
-    ConfirmDialogComponent,
-    NavBarComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatRadioModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatButtonModule,
-    MatSortModule,
-    MatTableModule,
-    MatDialogModule,
-  ],
-  providers: [
-    {
-      provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE],
-    },
-    { provide: MAT_DATE_FORMATS, useValue: DATE_FORMAT },
-    DatePipe,
-  ],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        RegisterComponent,
+        LoginComponent,
+        NotFoundComponent,
+        EditUserComponent,
+        UserListComponent,
+        ConfirmDialogComponent,
+        NavBarComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatInputModule,
+        MatIconModule,
+        MatRadioModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatButtonModule,
+        MatDialogModule,
+    ],
+    providers: [
+        {
+            provide: DateAdapter,
+            useClass: MomentDateAdapter,
+            deps: [MAT_DATE_LOCALE],
+        },
+        { provide: MAT_DATE_FORMATS, useValue: DATE_FORMAT },
+        DatePipe,
+    ],
+    bootstrap: [AppComponent],
 })
-export class AppModule {}
+
+export class AppModule { }

@@ -9,6 +9,14 @@
     display: flex;
     justify-content: space-between;
     padding: 20px;
+    h3 {
+      font-size: 20px;
+      font-weight: 500;
+    }
+    .add-btn {
+      background-color: #10025c;
+      color: #fff;
+    }
   }
   .table-wrapper {
     width: 100%;
@@ -28,4 +36,3 @@
     text-align: center;
   }
 }
-

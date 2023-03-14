@@ -24,7 +24,12 @@
       justify-content: space-between;
       padding: 16px 16px 0;
     }
+    button {
+      background-color: #10025c;
+      color: #fff;
+    }
     button:disabled {
+      background-color: #9b9a9a;
       cursor: not-allowed;
       pointer-events: all !important;
     }
@@ -33,6 +38,6 @@
 
 @media screen and (max-width: 520px) {
   .login-container {
-    width: 99%;
+    width: 100%;
   }
 }

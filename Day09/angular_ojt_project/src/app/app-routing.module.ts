@@ -7,20 +7,21 @@ import { EditUserComponent } from './components/users/edit-user/edit-user.compon
 import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'user-list', component: UserListComponent, canActivate: [AuthGuard] },
-  {
-    path: 'edit-user/:id',
-    component: EditUserComponent,
-    canActivate: [AuthGuard],
-  },
-  { path: '**', redirectTo: 'user-list' },
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
+    { path: 'user-list', component: UserListComponent, canActivate: [AuthGuard] },
+    {
+        path: 'edit-user/:id',
+        component: EditUserComponent,
+        canActivate: [AuthGuard],
+    },
+    { path: '**', redirectTo: 'user-list' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule],
 })
-export class AppRoutingModule {}
+
+export class AppRoutingModule { }

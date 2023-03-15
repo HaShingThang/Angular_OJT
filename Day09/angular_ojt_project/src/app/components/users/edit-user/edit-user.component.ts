@@ -13,6 +13,8 @@ import { Role } from 'src/app/interfaces/role.interface';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import Swal from 'sweetalert2';
 import { UserService } from 'src/app/services/user.service';
+import { dobValidator } from 'src/app/services/date.service';
+
 
 @Component({
     selector: 'app-edit-user',
@@ -78,7 +80,7 @@ export class EditUserComponent implements OnInit {
                 team: [this.userData.team, Validators.required],
                 role: [this.userData.role, Validators.required],
                 hobby: this.formBuilder.array(this.userData.hobby, Validators.required),
-                dob: [this.userData.dob, Validators.required],
+                dob: [this.userData.dob, [Validators.required, dobValidator]],
                 desc: [this.userData.desc, Validators.maxLength(1500)],
                 createdAt: [this.userData.createdAt, Validators.required],
             }, { validators: this.passwordMatchValidator } as AbstractControlOptions);

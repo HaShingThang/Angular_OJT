@@ -12,6 +12,7 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Router } from '@angular/router';
 import { Role } from 'src/app/interfaces/role.interface';
 import { AuthService } from 'src/app/services/auth.service';
+import { dobValidator } from 'src/app/services/date.service';
 
 @Component({
     selector: 'app-register',
@@ -82,7 +83,7 @@ export class RegisterComponent {
                 team: ['Wordpress', Validators.required],
                 role: ['', Validators.required],
                 hobby: this.fb.array([], [Validators.required]),
-                dob: ['', Validators.required],
+                dob: ['', [Validators.required, dobValidator]],
                 desc: ['', [Validators.maxLength(1500)]],
             },
             { validators: this.passwordMatchValidator } as AbstractControlOptions

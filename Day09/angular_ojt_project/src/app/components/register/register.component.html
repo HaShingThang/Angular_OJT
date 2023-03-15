@@ -58,9 +58,6 @@
         required
         [type]="hide ? 'password' : 'text'"
       />
-      <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
-        Confirm password is required.
-      </mat-error>
       <mat-error
         *ngIf="registerForm.get('confirmPass')?.hasError('passwordMismatch')"
       >
@@ -136,16 +133,18 @@
       <input matInput [matDatepicker]="dob" formControlName="dob" required />
       <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
       <mat-datepicker #dob></mat-datepicker>
-      <mat-error
-        *ngIf="
-          registerForm.controls['dob'].invalid &&
-          (registerForm.controls['dob'].dirty ||
-            registerForm.controls['dob'].touched)
-        "
-      >
-        Please select a valid date of birth.
+      <mat-error *ngIf="registerForm.controls['dob'].invalid">
+        <span
+          *ngIf="registerForm.controls['dob'].errors?.['required'] || registerForm.controls['dob'].errors?.['invalidDate'] "
+        >
+          Date of birth is required.
+        </span>
+        <span *ngIf="registerForm.controls['dob'].errors?.['invalidAge']">
+          Age must be between 15 and 119 years old.
+        </span>
       </mat-error>
     </mat-form-field>
+
     <mat-form-field>
       <textarea
         matInput

@@ -28,7 +28,7 @@ export class LoginComponent {
 
     ngOnInit(): void {
         if (this.authService.isLoggedIn()) {
-            this.router.navigate(['/user-list']);
+            this.router.navigate(['/user-list'])
         }
     }
 
@@ -39,6 +39,8 @@ export class LoginComponent {
     }
 
     onSubmit(): void {
+        if (!this.loginForm.valid) return
+
         if (this.loginForm.valid) {
             if (
                 this.checkUser(

@@ -6,6 +6,7 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.compone
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-user-list',
@@ -16,6 +17,7 @@ import { UserService } from 'src/app/services/user.service';
 export class UserListComponent implements OnInit {
     dataSource!: MatTableDataSource<User>;
     userData!: User[];
+    screenWidth!: number;
 
     displayedColumns: string[] = [
         'no',
@@ -31,7 +33,7 @@ export class UserListComponent implements OnInit {
     ];
 
     @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
-    @ViewChild(MatSort, { static: true }) sort!: MatSort;
+    @ViewChild(MatSort) sort!: MatSort;;
 
 
     constructor(public dialog: MatDialog, private users: UserService) {
@@ -47,7 +49,16 @@ export class UserListComponent implements OnInit {
         if (users !== null) {
             this.userData = JSON.parse(users);
         }
+
         this.dataSource.paginator = this.paginator;
+
+        this.screenWidth = window.innerWidth;
+        window.addEventListener('resize', () => {
+            this.screenWidth = window.innerWidth;
+        });
+    }
+
+    ngAfterViewInit() {
         this.dataSource.sort = this.sort;
     }
 
@@ -68,6 +79,12 @@ export class UserListComponent implements OnInit {
                     localStorage.setItem('users', JSON.stringify(this.dataSource.data));
                     this.dataSource._updateChangeSubscription();
                 }
+                Swal.fire({
+                    title: `Deleted "${user.name}" Successfully`,
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
             }
         });
     }

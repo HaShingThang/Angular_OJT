@@ -6,24 +6,13 @@ import {
     Validators,
     FormArray,
     FormControl,
+    AbstractControlOptions,
 } from '@angular/forms';
 import { User } from 'src/app/interfaces/user.interface';
 import { Role } from 'src/app/interfaces/role.interface';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import Swal from 'sweetalert2';
-
-function passwordMatchValidator(form: FormGroup<any>): {
-    passwordMismatch: boolean;
-} | null {
-    const password = form.get('password');
-    const confirmPass = form.get('confirmPass');
-
-    if (password && confirmPass && password.value !== confirmPass.value) {
-        return { passwordMismatch: true };
-    } else {
-        return null;
-    }
-}
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
     selector: 'app-edit-user',
@@ -52,13 +41,14 @@ export class EditUserComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private users: UserService
     ) { }
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
             this.userId = params['id'];
-            const usersData = localStorage.getItem('users');
+            const usersData = this.users.getUsers()
             if (usersData) {
                 const users: User[] = JSON.parse(usersData);
                 this.userData = users.find((user) => user.id === +this.userId);
@@ -73,7 +63,6 @@ export class EditUserComponent implements OnInit {
                         Validators.pattern(
                             '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{5,8}$'
                         ),
-                        passwordMatchValidator,
                     ],
                 ],
                 confirmPass: [
@@ -83,7 +72,6 @@ export class EditUserComponent implements OnInit {
                         Validators.pattern(
                             '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{5,8}$'
                         ),
-                        passwordMatchValidator,
                     ],
                 ],
                 gender: [this.userData.gender, Validators.required],
@@ -91,9 +79,20 @@ export class EditUserComponent implements OnInit {
                 role: [this.userData.role, Validators.required],
                 hobby: this.formBuilder.array(this.userData.hobby, Validators.required),
                 dob: [this.userData.dob, Validators.required],
+                desc: [this.userData.desc, Validators.maxLength(1500)],
                 createdAt: [this.userData.createdAt, Validators.required],
-            });
+            }, { validators: this.passwordMatchValidator } as AbstractControlOptions);
         });
+    }
+
+    passwordMatchValidator(control: FormGroup) {
+        const password = control.get('password');
+        const cpassword = control.get('confirmPass');
+        if (password && cpassword && password.value !== cpassword.value) {
+            cpassword.setErrors({ passwordMismatch: true });
+        } else {
+            cpassword!.setErrors(null);
+        }
     }
 
     onCheckboxChange(event: MatCheckboxChange) {
@@ -113,7 +112,7 @@ export class EditUserComponent implements OnInit {
     }
 
     onSubmit() {
-        const users: User[] = JSON.parse(localStorage.getItem('users') || '[]');
+        const users: User[] = JSON.parse(this.users.getUsers() || '[]');
         const updatedUsers = users.map((user) => {
             if (user.id === +this.userId) {
                 return { ...user, ...this.editUserForm.value };
@@ -121,12 +120,13 @@ export class EditUserComponent implements OnInit {
                 return user;
             }
         });
+
         localStorage.setItem('users', JSON.stringify(updatedUsers));
         Swal.fire({
             title: 'Updated Successfully',
             icon: 'success',
             showConfirmButton: false,
-            timer: 2000,
+            timer: 1500,
         });
         this.router.navigate(['/user-list']);
     }

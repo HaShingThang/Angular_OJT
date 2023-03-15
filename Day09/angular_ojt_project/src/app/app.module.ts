@@ -24,7 +24,6 @@ import { DatePipe } from '@angular/common';
 import { RegisterComponent } from './components/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { DATE_FORMAT } from './services/date.service';
 import { EditUserComponent } from './components/users/edit-user/edit-user.component';
 import { UserListComponent } from './components/users/user-list/user-list.component';
@@ -37,7 +36,6 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
         AppComponent,
         RegisterComponent,
         LoginComponent,
-        NotFoundComponent,
         EditUserComponent,
         UserListComponent,
         ConfirmDialogComponent,

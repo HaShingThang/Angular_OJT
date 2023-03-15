@@ -91,10 +91,12 @@ export class RegisterComponent {
 
     passwordMatchValidator(control: FormGroup) {
         const password = control.get('password');
-        const confirmPass = control.get('confirmPass');
-        return password && confirmPass && password.value !== confirmPass.value
-            ? { passwordMismatch: true }
-            : null;
+        const cpassword = control.get('confirmPass');
+        if (password && cpassword && password.value !== cpassword.value) {
+            cpassword.setErrors({ passwordMismatch: true });
+        } else {
+            cpassword!.setErrors(null);
+        }
     }
 
     onCheckboxChange(event: MatCheckboxChange) {
@@ -111,10 +113,6 @@ export class RegisterComponent {
                 i++;
             });
         }
-    }
-
-    get getConfirmPassword() {
-        return this.registerForm.get('confirmPass');
     }
 
     onSubmit() {

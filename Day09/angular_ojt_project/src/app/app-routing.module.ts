@@ -16,7 +16,7 @@ const routes: Routes = [
     component: EditUserComponent,
     canActivate: [AuthGuard],
   },
-  { path: '**', redirectTo: 'login' },
+  { path: '**', redirectTo: 'user-list' },
 ];
 
 @NgModule({

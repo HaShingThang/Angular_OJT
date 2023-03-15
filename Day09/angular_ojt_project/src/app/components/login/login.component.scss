@@ -1,33 +1,42 @@
 .login-container {
-  width: 60%;
+  width: 380px;
   padding: 20px;
   margin: 0 auto;
   padding-top: 20px;
+
   form {
     padding: 20px;
-    background-color: #c0c0c0;
+    background-color: rgba(12, 2, 70, 0.16);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     border-radius: 6px;
     display: flex;
     flex-direction: column;
     width: 100%;
     gap: 20px;
+
     h2 {
       text-align: center;
     }
+
     .invalid-user {
       text-align: center;
       color: #ff6347;
     }
+
     .form-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 16px 16px 0;
     }
+
     button {
       background-color: #10025c;
       color: #fff;
     }
+
     button:disabled {
       background-color: #9b9a9a;
       cursor: not-allowed;

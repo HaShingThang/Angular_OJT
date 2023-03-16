@@ -13,7 +13,7 @@ import { Role } from 'src/app/interfaces/role.interface';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import Swal from 'sweetalert2';
 import { UserService } from 'src/app/services/user.service';
-import { dobValidator } from 'src/app/services/date.service';
+import { dobValidator, passwordMatchValidator } from 'src/app/services/validator.service';
 
 
 @Component({
@@ -68,7 +68,7 @@ export class EditUserComponent implements OnInit {
                     ],
                 ],
                 confirmPass: [
-                    this.userData.confirmPass,
+                    this.userData.password,
                     [
                         Validators.required,
                         Validators.pattern(
@@ -83,18 +83,8 @@ export class EditUserComponent implements OnInit {
                 dob: [this.userData.dob, [Validators.required, dobValidator]],
                 desc: [this.userData.desc, Validators.maxLength(1500)],
                 createdAt: [this.userData.createdAt, Validators.required],
-            }, { validators: this.passwordMatchValidator } as AbstractControlOptions);
+            }, { validators: passwordMatchValidator } as AbstractControlOptions);
         });
-    }
-
-    passwordMatchValidator(control: FormGroup) {
-        const password = control.get('password');
-        const cpassword = control.get('confirmPass');
-        if (password && cpassword && password.value !== cpassword.value) {
-            cpassword.setErrors({ passwordMismatch: true });
-        } else {
-            cpassword!.setErrors(null);
-        }
     }
 
     onCheckboxChange(event: MatCheckboxChange) {
@@ -116,8 +106,9 @@ export class EditUserComponent implements OnInit {
     onSubmit() {
         const users: User[] = JSON.parse(this.users.getUsers() || '[]');
         const updatedUsers = users.map((user) => {
+            const { confirmPass, ...others } = this.editUserForm.value
             if (user.id === +this.userId) {
-                return { ...user, ...this.editUserForm.value };
+                return { ...user, ...others };
             } else {
                 return user;
             }

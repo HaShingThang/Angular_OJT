@@ -25,7 +25,7 @@ export class NavBarComponent {
             cancelButtonColor: '#808080',
         }).then((result) => {
             if (result.isConfirmed) {
-                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('user');
                 this.router.navigate(['/login']);
             }
         });

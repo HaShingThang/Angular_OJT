@@ -24,7 +24,7 @@ import { DatePipe } from '@angular/common';
 import { RegisterComponent } from './components/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
-import { DATE_FORMAT } from './services/date.service';
+import { DATE_FORMAT } from './services/validator.service';
 import { EditUserComponent } from './components/users/edit-user/edit-user.component';
 import { UserListComponent } from './components/users/user-list/user-list.component';
 import { ConfirmDialogComponent } from './components/users/confirm-dialog/confirm-dialog.component';

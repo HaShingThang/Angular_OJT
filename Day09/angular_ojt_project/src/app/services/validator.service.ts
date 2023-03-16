@@ -1,4 +1,4 @@
-import { FormControl, ValidationErrors } from "@angular/forms";
+import { FormControl, FormGroup, ValidationErrors } from "@angular/forms";
 
 export const DATE_FORMAT = {
     parse: {
@@ -24,4 +24,14 @@ export function dobValidator(control: FormControl): ValidationErrors | null {
         return { invalidAge: true };
     }
     return null;
+}
+
+export function passwordMatchValidator(control: FormGroup) {
+    const password = control.get('password');
+    const cpassword = control.get('confirmPass');
+    if (password && cpassword && password.value !== cpassword.value) {
+        cpassword.setErrors({ passwordMismatch: true });
+    } else {
+        cpassword!.setErrors(null);
+    }
 }

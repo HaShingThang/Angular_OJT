@@ -51,6 +51,10 @@
     tr:nth-child(odd) td {
       background-color: #f2f2f2;
     }
+    .delete-btn:disabled {
+      cursor: not-allowed;
+      pointer-events: all !important;
+    }
   }
 
   h3 {

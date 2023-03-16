@@ -70,7 +70,13 @@
           >
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-icon-button color="warn" (click)="onDelete(user)">
+          <button
+            mat-icon-button
+            color="warn"
+            class="delete-btn"
+            (click)="onDelete(user)"
+            [disabled]="loggedUser.isLoggedUser(user.email)"
+          >
             <mat-icon>delete</mat-icon>
           </button>
         </td>

@@ -12,7 +12,8 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Router } from '@angular/router';
 import { Role } from 'src/app/interfaces/role.interface';
 import { AuthService } from 'src/app/services/auth.service';
-import { dobValidator } from 'src/app/services/date.service';
+import { dobValidator, passwordMatchValidator } from 'src/app/services/validator.service';
+
 
 @Component({
     selector: 'app-register',
@@ -49,8 +50,6 @@ export class RegisterComponent {
                     '',
                     [
                         Validators.required,
-                        Validators.minLength(2),
-                        Validators.maxLength(40),
                     ],
                 ],
                 email: [
@@ -58,7 +57,6 @@ export class RegisterComponent {
                     [
                         Validators.required,
                         Validators.email,
-                        Validators.pattern('[a-z0-9].+@[a-z]+.[a-z]{2,3}'),
                     ],
                 ],
                 password: [
@@ -86,7 +84,7 @@ export class RegisterComponent {
                 dob: ['', [Validators.required, dobValidator]],
                 desc: ['', [Validators.maxLength(1500)]],
             },
-            { validators: this.passwordMatchValidator } as AbstractControlOptions
+            { validators: passwordMatchValidator } as AbstractControlOptions
         );
     }
 
@@ -121,8 +119,9 @@ export class RegisterComponent {
             let users: any[] = JSON.parse(localStorage.getItem('users') ?? '[]');
             const now = new Date();
             const createdAt = this.datePipe.transform(now, 'yyyy/MM/dd hh:mm a');
+            const { confirmPass, ...others } = this.registerForm.value;
             let userData = [
-                { id: users.length + 1, ...this.registerForm.value, createdAt },
+                { id: users.length + 1, ...others, createdAt },
             ];
             users.push(...userData);
             localStorage.setItem('users', JSON.stringify(users));

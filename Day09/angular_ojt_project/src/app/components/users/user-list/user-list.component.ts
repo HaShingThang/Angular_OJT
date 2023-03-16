@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/interfaces/user.interface';
 import { MatDialog } from '@angular/material/dialog';
@@ -7,14 +7,14 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
     selector: 'app-user-list',
     templateUrl: './user-list.component.html',
     styleUrls: ['./user-list.component.scss'],
 })
-
-export class UserListComponent implements OnInit {
+export class UserListComponent implements OnInit, AfterViewInit {
     dataSource!: MatTableDataSource<User>;
     userData!: User[];
     screenWidth!: number;
@@ -33,11 +33,14 @@ export class UserListComponent implements OnInit {
     ];
 
     @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
-    @ViewChild(MatSort) sort!: MatSort;;
+    @ViewChild(MatSort) sort!: MatSort;
 
-
-    constructor(public dialog: MatDialog, private users: UserService) {
-        const usersData: any = this.users.getUsers()
+    constructor(
+        public dialog: MatDialog,
+        private users: UserService,
+        public loggedUser: AuthService
+    ) {
+        const usersData: any = this.users.getUsers();
         if (usersData) {
             this.userData = JSON.parse(usersData);
         }
@@ -45,7 +48,7 @@ export class UserListComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        const users: any = this.users.getUsers()
+        const users: any = this.users.getUsers();
         if (users !== null) {
             this.userData = JSON.parse(users);
         }
